@@ -1,0 +1,160 @@
+---
+import GitHub from "./icons/GitHub.astro";
+import NextJS from "./icons/NextJS.astro";
+import Tailwind from "./icons/Tailwind.astro";
+import Nodejs from "./icons/Nodejs.astro";
+import Link from "./icons/Link.astro";
+import React from "./icons/React.astro";
+import Html from "./icons/Html.astro";
+import Express from "./icons/Express.astro";
+import Vercel from "./icons/Vercel.astro";
+import LinkButton from "./LinkButton.astro";
+
+const TAGS = {
+  NEXT: {
+    name: "Next.js",
+    class: "bg-black text-white",
+    icon: NextJS,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: Tailwind,
+  },
+  NODEJS: {
+    name: "NodeJs",
+    class: "bg-[#445f36] text-white",
+    icon: Nodejs,
+  },
+  REACT: {
+    name: "React",
+    class: "bg-[#205f5f] text-white",
+    icon: React,
+  },
+  HTML: {
+    name: "Html5",
+    class: "bg-[#633507] text-white",
+    icon: Html,
+  },
+  EXPRESS: {
+    name: "Express",
+    class: "bg-[#343230] text-white",
+    icon: Express,
+  },
+  VERCEL: {
+    name: "Vercel",
+    class: "bg-[#343230] text-white",
+    icon: Vercel,
+  },
+};
+const PROJECTS = [
+  {
+    title: "Tec-info",
+    description:
+      "Sitio de busqueda de alumnos de Tecsup por codigo de estudiante.  Ejem: 579046",
+    link: "https://tecsup.netlify.app/#/buscador",
+    github: "https://github.com/Lesandrod/Tec-Info",
+    image: "https://i.ibb.co/rdmmJrr/Captura-desde-2024-08-06-02-18-14.png",
+    tags: [TAGS.NODEJS, TAGS.TAILWIND, TAGS.REACT],
+  },
+  {
+    title: "Expresatec",
+    description:
+      "Proyecto sobre dinamicas con pictoframas y reconocimiento de expresiones faciales para ninos con TEA",
+    link: "https://expresatec.netlify.app/",
+    github: "https://github.com/Lesan-Workspace/expresatec-front1",
+    image: "https://i.ibb.co/Y2pGtKv/Captura-desde-2024-08-06-02-54-17.png",
+    tags: [TAGS.NEXT, TAGS.TAILWIND],
+  },
+  {
+    title: "BAckInfo TEc",
+    description: "Api sobre personas y estudiantes de libre uso",
+    link: "backinfotecv2.vercel.app",
+    github: "https://github.com/Lesandrod/Backinfotecv2",
+    image: "https://i.ibb.co/MVrQkBd/Captura-desde-2024-08-06-03-00-21.png",
+    tags: [TAGS.NODEJS, TAGS.EXPRESS, TAGS.VERCEL],
+  },
+  {
+    title: "Rick and Morty Infopage",
+    description:
+      "Proyecto de practica de la serie Rick and Morty, con la api de Rick and Morty",
+    link: "https://rick--morty-3e802.web.app/#/characters",
+    github: "https://github.com/Lesandrod/RickyMorty-Infopage",
+    image: "https://i.ibb.co/QKMJ2xq/Captura-desde-2024-08-06-02-34-46.png",
+    tags: [TAGS.REACT, TAGS.TAILWIND],
+  },
+  {
+    title: "EsanCArnet Clone",
+    description:
+      "Proyecto de practica de un clon del carnet de la Universidad ESAN",
+    link: "https://legendary-capybara-8e603e.netlify.app/",
+    github: "https://github.com/Lesandrod/esanpro2",
+    image: "https://i.ibb.co/F6L6Ndw/Captura-desde-2024-08-06-02-40-37.png",
+    tags: [TAGS.HTML, TAGS.TAILWIND],
+  },
+  {
+    title: "Santangelo Shop",
+    description: "Pagína sobre productos de la empresa Santangelo",
+    link: "https://www.santangelo.shop/",
+    image: "https://i.ibb.co/KL189Mk/Captura-desde-2024-08-06-02-46-40.png",
+    tags: [TAGS.REACT, TAGS.TAILWIND],
+  },
+];
+---
+
+<div class="flex flex-col gap-y-16">
+  {
+    PROJECTS.map(({ image, title, description, tags, link, github }) => (
+      <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+        <div class="w-full md:w-1/2">
+          <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+            <img
+              alt="Recién llegado vs 5 años en Nueva Zelanda"
+              class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+              loading="lazy"
+              src={image}
+            />
+          </div>
+        </div>
+
+        <div class="w-full md:w-1/2 md:max-w-lg">
+          <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+            {title}
+          </h3>
+          <div class="flex flex-wrap mt-2">
+            <ul class="flex flex-row mb-2 gap-x-2">
+              {tags.map((tag) => (
+                <li>
+                  <span
+                    class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+                  >
+                    <tag.icon class="size-4" />
+                    {tag.name}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="mt-2 text-gray-700 dark:text-gray-400">
+              {description}
+            </div>
+            <footer class="flex items-end justify-start mt-4 gap-x-4">
+              {github && (
+                <LinkButton href={github}>
+                  <GitHub class="size-6" />
+                  Code
+                </LinkButton>
+              )}
+              {link && (
+                <LinkButton href={link}>
+                  <Link class="size-4" />
+                  Preview
+                </LinkButton>
+              )}
+            </footer>
+          </div>
+        </div>
+      </article>
+    ))
+  }
+</div>
